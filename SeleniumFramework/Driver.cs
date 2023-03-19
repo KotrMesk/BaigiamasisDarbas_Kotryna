@@ -32,5 +32,14 @@ namespace SeleniumFramework
             screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
             return screenshotFilePath;
         }
+
+        internal static void OpenUrl(string url)
+        {
+            driver.Value.Url = url;
+        }
+        public static IWebDriver GetDriver()
+        {
+            return driver.Value;
+        }
     }
 }
