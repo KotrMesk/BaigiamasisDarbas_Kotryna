@@ -2,10 +2,11 @@
 1. Test Scenario: Prekės elgesys krepšelyje:
     1. TC: Prekės įdėjimas į krepšelį per prekės puslapį:
         - Atidaromas psl.: https://www.ikea.lt/lt/products/miegamasis/ciuziniai-ir-ju-priedai/ciuziniai
-        1. Spaudžiama ant pirmos prekės 
-        2. Spaudžiamas mygtukas „įdėti į pirkinių krepšelį“
-        3. Atsidariusį langą uždarome spausdami „Uždaryti“
-        2. Spaudžiamas krepšelio mygtukas
+        1. Priimami slapukai
+        2. Spaudžiama ant pirmos prekės 
+        3. Spaudžiamas mygtukas „įdėti į pirkinių krepšelį“
+        4. Atsidariusį langą uždarome spausdami „Uždaryti“
+        5. Spaudžiamas krepšelio mygtukas
         - Tikrinama ar krepšelyje įdėta prekė atitinka prekės pasirinkimą.
     2. TC: Prekės ištrynimas iš krepšelio:
         - Atidaromas psl.: https://www.ikea.lt/lt/rooms/miegamasis/ciuziniai-ir-ju-priedai/ciuziniai

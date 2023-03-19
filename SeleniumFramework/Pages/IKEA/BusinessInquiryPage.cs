@@ -7,23 +7,21 @@ namespace SeleniumFramework.Pages.IKEA
 {
     public class BusinessInquiryPage
     {
-        public static void CheckBoxAgreeToTermsAndConditionsAndPrivacyPolicy()
+        public static void Open()
         {
-            string locator = "//*[@id='agree_terms']";
-            Common.ScrollToElement(0, 250);
-            Common.ClickElement(locator);
+            Driver.OpenUrl("https://www.ikea.lt/lt/business/inquiry");
         }
 
-        public static void ClickSubmitButton()
+        public static void InputWrongRepresentativeName(string name)
         {
-            string locator = "//*[@class='btn btn-blue-link']";
-            Common.ClickElement(locator);
+            string locator = "//*[@name='representative_name']";
+            Common.SendKeys(locator, name);
         }
 
-        public static string GetWrongRepresentativeNameResult()
+        public static void InputRepresentativeSurname(string surname)
         {
-            Common.ScrollToElement(0, 0);
-            return Common.GetElementText("//*[@class='error-message']");
+            string locator = "//*[@name='representative_surname']";
+            Common.SendKeys(locator, surname);
         }
 
         public static void InputCompanyName(string companyName)
@@ -44,27 +42,29 @@ namespace SeleniumFramework.Pages.IKEA
             Common.SendKeys(locator, phone);
         }
 
-        public static void InputRepresentativeSurname(string surname)
-        {
-            string locator = "//*[@name='representative_surname']";
-            Common.SendKeys(locator, surname);
-        }
-
         public static void InputRequest(string request)
         {
             string locator = "//*[@id='root']/div[4]/div/textarea";
             Common.SendKeys(locator, request);
         }
 
-        public static void InputWrongRepresentativeName(string name)
+        public static void CheckBoxAgreeToTermsAndConditionsAndPrivacyPolicy()
         {
-            string locator = "//*[@name='representative_name']";
-            Common.SendKeys(locator, name);
+            string locator = "//*[@id='agree_terms']";
+            Common.ScrollToElement(0, 250);
+            Common.ClickElement(locator);
         }
 
-        public static void Open()
+        public static void ClickSubmitButton()
         {
-            Driver.OpenUrl("https://www.ikea.lt/lt/business/inquiry");
+            string locator = "//*[@class='btn btn-blue-link']";
+            Common.ClickElement(locator);
+        }
+
+        public static string GetWrongRepresentativeNameResult()
+        {
+            Common.ScrollToElement(0, -300);
+            return Common.GetElementText("//*[@class='error-message']");
         }
     }
 }
