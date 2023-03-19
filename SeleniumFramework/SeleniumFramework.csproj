@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="Driver.cs" />
     <Compile Include="Pages\Common.cs" />
+    <Compile Include="Pages\IKEA\BusinessInquiryPage.cs" />
+    <Compile Include="Pages\IKEA\ClientPage.cs" />
+    <Compile Include="Pages\IKEA\MattressesPage.cs" />
+    <Compile Include="Pages\IKEA\TapsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\IKEA\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
