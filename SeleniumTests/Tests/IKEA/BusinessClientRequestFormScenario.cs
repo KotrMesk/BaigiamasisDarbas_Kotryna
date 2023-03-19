@@ -16,6 +16,8 @@ namespace SeleniumTests.Tests.IKEA
             string email = "imone@imone.com";
             string request = "request";
 
+            string expectedResult = $"Lauke negali būti įvesti simboliai '{name[0]}', '{name[1]}', '{name[2]}'";
+
             BusinessInquiryPage.Open();
             BusinessInquiryPage.InputWrongRepresentativeName(name);
             BusinessInquiryPage.InputRepresentativeSurname(surname);
@@ -25,7 +27,9 @@ namespace SeleniumTests.Tests.IKEA
             BusinessInquiryPage.InputRequest(request);
             BusinessInquiryPage.CheckBoxAgreeToTermsAndConditionsAndPrivacyPolicy();
             BusinessInquiryPage.ClickSubmitButton();
+            string actualResult = BusinessInquiryPage.GetWrongRepresentativeNameResult();
 
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }

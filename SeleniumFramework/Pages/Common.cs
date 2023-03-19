@@ -1,5 +1,6 @@
 ﻿
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 
 namespace SeleniumFramework.Pages
@@ -13,6 +14,22 @@ namespace SeleniumFramework.Pages
         internal static void SendKeys(string locator, string keys)
         {
             GetElement(locator).SendKeys(keys);
+        }
+
+        internal static void ClickElement(string locator)
+        {
+            GetElement(locator).Click();
+        }
+        internal static void ScrollToElement(int x, int y)
+        {
+            Actions actions = new Actions(Driver.GetDriver());
+            actions.ScrollByAmount(x, y);
+            actions.Perform();
+        }
+
+        internal static string GetElementText(string locator)
+        {
+            return GetElement(locator).Text;
         }
     }
 }

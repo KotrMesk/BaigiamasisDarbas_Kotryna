@@ -9,12 +9,21 @@ namespace SeleniumFramework.Pages.IKEA
     {
         public static void CheckBoxAgreeToTermsAndConditionsAndPrivacyPolicy()
         {
-            throw new NotImplementedException();
+            string locator = "//*[@id='agree_terms']";
+            Common.ScrollToElement(0, 250);
+            Common.ClickElement(locator);
         }
 
         public static void ClickSubmitButton()
         {
-            throw new NotImplementedException();
+            string locator = "//*[@class='btn btn-blue-link']";
+            Common.ClickElement(locator);
+        }
+
+        public static string GetWrongRepresentativeNameResult()
+        {
+            Common.ScrollToElement(0, 0);
+            return Common.GetElementText("//*[@class='error-message']");
         }
 
         public static void InputCompanyName(string companyName)
