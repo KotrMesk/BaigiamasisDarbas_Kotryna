@@ -1,7 +1,10 @@
 ﻿
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
+using System.Net.NetworkInformation;
 
 namespace SeleniumFramework.Pages
 {
@@ -30,6 +33,17 @@ namespace SeleniumFramework.Pages
         internal static string GetElementText(string locator)
         {
             return GetElement(locator).Text;
+        }
+
+        internal static string GetElementCssAttributeValue(string locator, string cssPropertyName)
+        {
+            return GetElement(locator).GetCssValue(cssPropertyName);
+        }
+
+        internal static void WaitForElementCssPropertyToBe(string locator, string cssProperty, string expectedColor)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(d => d.FindElement(By.XPath(locator)).GetCssValue(cssProperty) == expectedColor);
         }
     }
 }
