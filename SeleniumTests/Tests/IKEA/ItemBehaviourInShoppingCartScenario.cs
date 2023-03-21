@@ -10,7 +10,6 @@ namespace SeleniumTests.Tests.IKEA
         public void ItemAddToShoppingCartThroughItemsPage()
         {
             MattressesPage.Open();
-            MattressesPage.AcceptCookies();
             MattressesPage.SelectFirstItem();
             MattressesPage.GetItemNumberInItemPage();
             string expectedResult = MattressesPage.GetItemNumberInItemPage();
@@ -27,7 +26,6 @@ namespace SeleniumTests.Tests.IKEA
             string expectedResult = "Jūsų pirkinių krepšelis tuščias. Jūs neturite prekių pirkinių krepšelyje.";
 
             MattressesPage.Open();
-            MattressesPage.AcceptCookies();
             MattressesPage.UnderFirstItemClickQuickLookButton();
             MattressesPage.ClickButtonInSideNavigationAddToCart();
             MattressesPage.OpenShoppingCartThroughDialogWindow();
