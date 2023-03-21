@@ -46,7 +46,6 @@
         public static void CheckBoxAgreeToTermsAndConditionsAndPrivacyPolicy()
         {
             string locator = "//*[@id='agree_terms']";
-            Common.ScrollToElement(0, 250);
             Common.ClickElement(locator);
         }
 
