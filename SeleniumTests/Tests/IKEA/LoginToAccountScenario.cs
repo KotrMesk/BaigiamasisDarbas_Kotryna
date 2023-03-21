@@ -1,11 +1,6 @@
 ﻿using NUnit.Framework;
 using SeleniumFramework.Pages.IKEA;
 using SeleniumTests.BaseTests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumTests.Tests.IKEA
 {
@@ -32,6 +27,5 @@ namespace SeleniumTests.Tests.IKEA
             Assert.AreEqual(actualEmailBoxColor, expectedEmailBoxColor);
             Assert.AreEqual(actualEmailValidationMessage, expectedEmailValidationMessage);
         }
-
     }
 }

@@ -1,17 +1,9 @@
-﻿using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace SeleniumFramework.Pages.IKEA
+﻿namespace SeleniumFramework.Pages.IKEA
 {
     public class ClientPage
     {
         private static string boxToChangeColorLocator = "//*[@name='loginForm_email']";
+
         public static void Open()
         {
             Driver.OpenUrl("https://www.ikea.lt/lt/client");
