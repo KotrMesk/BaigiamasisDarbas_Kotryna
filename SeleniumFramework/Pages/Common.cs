@@ -45,5 +45,21 @@ namespace SeleniumFramework.Pages
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
             wait.Until(d => d.FindElement(By.XPath(locator)).GetCssValue(cssProperty) == expectedColor);
         }
+
+        internal static void SwitchToPopup()
+        {
+            Driver.GetDriver().SwitchTo().Equals(false);
+        }
+
+        internal static void SwitchToFrame()
+        {
+            
+            Driver.GetDriver().SwitchTo().Equals(false);
+        }
+
+        internal static string GetElementTextPart(string locator)
+        {
+            return GetElement(locator).Text.Substring(14, 10);
+        }
     }
 }
