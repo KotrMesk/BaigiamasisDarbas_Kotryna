@@ -11,7 +11,6 @@ namespace SeleniumTests.Tests.IKEA
         {
             MattressesPage.Open();
             MattressesPage.SelectFirstItem();
-            MattressesPage.GetItemNumberInItemPage();
             string expectedResult = MattressesPage.GetItemNumberInItemPage();
             MattressesPage.ClickButtonAddToCart();
             MattressesPage.CloseDialogWindow();
@@ -20,6 +19,7 @@ namespace SeleniumTests.Tests.IKEA
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
         [Test]
         public void ItemDeleteFromShoppingCart()
         {

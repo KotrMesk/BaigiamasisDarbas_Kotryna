@@ -29,12 +29,6 @@ namespace SeleniumFramework.Pages
         {
             GetElement(locator).Click();
         }
-        internal static void ScrollToElement(int x, int y)
-        {
-            Actions actions = new Actions(Driver.GetDriver());
-            actions.ScrollByAmount(x, y);
-            actions.Perform();
-        }
 
         internal static string GetElementText(string locator)
         {
@@ -50,16 +44,6 @@ namespace SeleniumFramework.Pages
         {
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
             wait.Until(d => d.FindElement(By.XPath(locator)).GetCssValue(cssProperty) == expectedColor);
-        }
-
-        internal static void SwitchToDialog()
-        {
-            Driver.GetDriver().SwitchTo().Equals(false);
-        }
-
-        internal static void SwitchToSideNavigation()
-        {
-            Driver.GetDriver().FindElement(By.XPath("//*[@id='sidenav']"));
         }
 
         internal static string GetElementTextPart(string locator)
@@ -110,6 +94,12 @@ namespace SeleniumFramework.Pages
                     return;
                 }
             }
+        }
+
+        internal static void WaitForElementToBeVisisble(string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
         }
     }
 }
