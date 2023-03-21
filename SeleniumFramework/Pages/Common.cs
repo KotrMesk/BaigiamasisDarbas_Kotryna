@@ -4,7 +4,6 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace SeleniumFramework.Pages
@@ -15,6 +14,12 @@ namespace SeleniumFramework.Pages
         {
             return Driver.GetDriver().FindElement(By.XPath(locator));
         }
+
+        private static List<IWebElement> GetElements(string locator)
+        {
+            return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
+        }
+
         internal static void SendKeys(string locator, string keys)
         {
             GetElement(locator).SendKeys(keys);
@@ -69,51 +74,26 @@ namespace SeleniumFramework.Pages
             GetElement(locator).Click();
         }
 
-        internal static void SlideLowPriceHandleToTheRight(string locator)
+        internal static void DragAndDropToOffset(string locator, int offsetX, int offsetY)
         {
             IWebElement element = GetElement(locator);
 
             Actions actions = new Actions(Driver.GetDriver());
-            actions.DragAndDropToOffset(element, 150, 0);
-
+            actions.DragAndDropToOffset(element, offsetX, offsetY);
             actions.Perform();
         }
 
-        internal static void ScrollDownToSeePrices()
+        internal static List<string> GetTextOfMultipleElements()
         {
-            Actions actions = new Actions(Driver.GetDriver());
-            actions.ScrollByAmount(0, 400);
-            actions.Perform();
-        }
+            List<IWebElement> elements = GetElements("//*[contains(@class,'itemNormalPrice')]");
+            List<string> texts = new List<string>();
 
-        internal static bool CompareSortedItemsPricesToNewSliderValue()
-        {
-            string locator = "//*[@class='itemNormalPrice display-6']";
-            string prices = GetElement(locator).Text;
-            int pricesnew = Int32.Parse(prices.Replace(" €", ""));
-            string locator1 = "//*[@id='pmin-pmin']";
-            string compare = GetElement(locator1).Text.Substring(12, 3);
-            int newLowValue = Int32.Parse(compare);
-            if (pricesnew >= newLowValue)
+            foreach (IWebElement element in elements)
             {
-                return true;
+                texts.Add(element.Text);
             }
-            else
-            {
-                return false;
-            }
-        }
 
-        internal static void WaitForElementToBeInvisible(string locator)
-        {
-            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
-            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(locator)));
-        }
-
-        internal static void WaitForElementToBeVisible(string locator)
-        {
-            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
-            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(locator)));
+            return texts;
         }
     }
 }

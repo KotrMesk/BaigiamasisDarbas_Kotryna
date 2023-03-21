@@ -10,12 +10,14 @@ namespace SeleniumTests.Tests.IKEA
         public void MinimumPriceInSliderAdjustment()
         {
             TapsPage.Open();
-            TapsPage.SelectPriceFilter();
-            TapsPage.SlideLowPriceHandleToTheRight();
-            TapsPage.SelectPriceFilter();
-            TapsPage.ScrollDownToSeePrices();
+            TapsPage.TogglePriceFilter();
+            TapsPage.SlideLowPriceHandleAboveSpecifiedValue(60);
+            TapsPage.SlideHighPriceHandleBelowSpecifiedValue(130);
+            int priceLowValue = TapsPage.GetActualPriceFilterLowValue();
+            int priceHighValue = TapsPage.GetActualPriceFilterHighValue();
+            TapsPage.TogglePriceFilter();
 
-            Assert.True(TapsPage.CompareSortedItemsPricesToNewSliderValue());
+            Assert.True(TapsPage.DisplayedProductPricesAreWithinRange(priceLowValue, priceHighValue));
         }
     }
 }
