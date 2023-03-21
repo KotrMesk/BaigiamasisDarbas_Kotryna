@@ -14,8 +14,6 @@ namespace SeleniumTests.Tests.IKEA
         [Test]
         public void ItemAddToShoppingCartThroughItemsPage()
         {
-            
-
             MattressesPage.Open();
             MattressesPage.AcceptCookies();
             MattressesPage.SelectFirstItem();

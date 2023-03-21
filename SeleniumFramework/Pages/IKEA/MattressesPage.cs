@@ -28,7 +28,6 @@ namespace SeleniumFramework.Pages.IKEA
         {
 
             string locator = "//*[@data-action='close']";
-            //string locator = "//*[@data-action='goCart']";
             Common.SwitchToPopup();
             System.Threading.Thread.Sleep(1000);
             Common.ClickElement(locator);

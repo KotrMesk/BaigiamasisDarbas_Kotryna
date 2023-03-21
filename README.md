@@ -4,10 +4,11 @@
         - Atidaromas psl.: https://www.ikea.lt/lt/products/miegamasis/ciuziniai-ir-ju-priedai/ciuziniai
         1. Priimami slapukai
         2. Spaudžiama ant pirmos prekės 
-        3. Spaudžiamas mygtukas „įdėti į pirkinių krepšelį“
-        4. Atsidariusį langą uždarome spausdami „Uždaryti“
-        5. Spaudžiamas krepšelio mygtukas
-        - Tikrinama ar krepšelyje įdėta prekė atitinka prekės pasirinkimą.
+        3. Paimamas prekės kodas
+        4. Spaudžiamas mygtukas „įdėti į pirkinių krepšelį“
+        5. Atsidariusį langą uždarome spausdami „Tęsti apsipirkimą“
+        6. Spaudžiamas krepšelio mygtukas
+        - Tikrinama ar krepšelyje įdėtos prekės kodas atitinka pasirinktos prekės kodą.
     2. TC: Prekės ištrynimas iš krepšelio:
         - Atidaromas psl.: https://www.ikea.lt/lt/rooms/miegamasis/ciuziniai-ir-ju-priedai/ciuziniai
         1. Pavažiuojame žemyn kad matytųsi mygtukas „Greita peržiūra“
@@ -28,19 +29,19 @@
     1. Neteisingo el.pašto į el.pašto adreso laukelį įvedimo:
         - Atidaromas psl.: https://www.ikea.lt/lt/client
         1. El.pašto adresas laukelyje įvedamas neteisingas el.paštas: „kkk“
-        2. Suvedamas klaidingas slaptažodis
+        2. Suvedamas slaptažodis
         3. Spaudžiamas mygtukas „Prisijungti“
         4. Palaukiame kol spalva pilnai užsikraus
         - Tikrinamas ar el.pašto laukelio kraštas tapo raudonas ir po laukeliu atsirado raudonas laukelis su užrašu: „Invalid email“
 4. Test Scenario: Verslo klientų užklausos formos tikrinimas
     1. TC: Netinkamų simbolių įvedimas „Atstovo vardo“ laukelyje:
         - Atidaromas psl.: https://www.ikea.lt/lt/business/inquiry
-        1. „Atstovo vardo“ laukelyje įvedami skaičiai: 15234
-        2. „Atstovo pavardė“ laukelyje įvedama: Pavardė
-        3. „Įmonės pavadinimas“ laukelyje įvedama: Įmonė
-        4. „El. pašto adresas“ laukelyje įvedame: elpastas@elpastas.com
-        5. „Telefonas“ laukelyje įvedama: 123456
-        6. „Užklausa“ laukelyje įvedama: uzklausa
+        1. „Atstovo vardo“ laukelyje įvedami skaičiai: 456
+        2. „Atstovo pavardė“ laukelyje įvedama: Pavarde
+        3. „Įmonės pavadinimas“ laukelyje įvedama: Imone
+        4. „El. pašto adresas“ laukelyje įvedame: imone@imone.com
+        5. „Telefonas“ laukelyje įvedama: 1234567
+        6. „Užklausa“ laukelyje įvedama: request
         7. Pažymimas langelis „Perskaičiau ir sutinku su privatumo politika ir verslo klientų pirkimo taisyklėmis ir įkainiais“ varnele
         8. Spaudžiamas „Pateikti“ mygtukas
-        - Tikrinama ar po „Atstovo vardas“ laukeliu atsirado raudonas laukelis su užrašu: „Lauke negali būti įvesti simboliai '1', '5', '2', '3', '8', '7'“ 
+        - Tikrinama ar po „Atstovo vardas“ laukeliu atsirado raudonas laukelis su užrašu: „Lauke negali būti įvesti simboliai '4', '5', '6'“ 
