@@ -14,7 +14,6 @@ namespace SeleniumFramework
         public static void SetupDriver()
         {
             ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--headless");
             driver.Value = new ChromeDriver(options);
         }
         public static void CloseDriver()

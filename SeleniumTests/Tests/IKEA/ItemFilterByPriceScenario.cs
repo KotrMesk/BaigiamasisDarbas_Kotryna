@@ -7,7 +7,7 @@ namespace SeleniumTests.Tests.IKEA
     internal class ItemFilterByPriceScenario : BaseTest
     {
         [Test]
-        public void MaximumPriceInSliderAdjustment()
+        public void MinimumPriceInSliderAdjustment()
         {
             TapsPage.Open();
             TapsPage.SelectFilters();
