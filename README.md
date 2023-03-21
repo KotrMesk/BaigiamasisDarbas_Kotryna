@@ -11,7 +11,7 @@
         - Tikrinama ar krepšelyje įdėtos prekės kodas atitinka pasirinktos prekės kodą.
     2. TC: Prekės ištrynimas iš krepšelio:
         - Atidaromas psl.: https://www.ikea.lt/lt/rooms/miegamasis/ciuziniai-ir-ju-priedai/ciuziniai
-        1. Pavažiuojame žemyn kad matytųsi mygtukas „Greita peržiūra“
+        1. Priimami slapukai
         2. Po pirma preke paspaudžiamas mygtukas „Greita peržiūra“
         3. Dešinėje atsiradusiame lange spausti „Įdėti į pirkinių krepšelį“
         4. Atsidariusiame lange spausti „Peržiūrėti pirkinių krepšelį“ mygtuką

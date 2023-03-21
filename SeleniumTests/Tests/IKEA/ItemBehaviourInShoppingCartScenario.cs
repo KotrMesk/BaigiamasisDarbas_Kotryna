@@ -1,11 +1,6 @@
 ﻿using NUnit.Framework;
 using SeleniumFramework.Pages.IKEA;
 using SeleniumTests.BaseTests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumTests.Tests.IKEA
 {
@@ -20,7 +15,7 @@ namespace SeleniumTests.Tests.IKEA
             MattressesPage.GetItemNumberInItemPage();
             string expectedResult = MattressesPage.GetItemNumberInItemPage();
             MattressesPage.ClickButtonAddToCart();
-            MattressesPage.ClosePopupWindow();
+            MattressesPage.CloseDialogWindow();
             MattressesPage.ClickShoppingCartButton();
             string actualResult = MattressesPage.GetItemNumberInShoppingCart();
 
@@ -34,8 +29,8 @@ namespace SeleniumTests.Tests.IKEA
             MattressesPage.Open();
             MattressesPage.AcceptCookies();
             MattressesPage.UnderFirstItemClickQuickLookButton();
-            MattressesPage.ClickButtonInFrameAddToCart();
-            MattressesPage.OpenShoppingCartThroughPopupWindow();
+            MattressesPage.ClickButtonInSideNavigationAddToCart();
+            MattressesPage.OpenShoppingCartThroughDialogWindow();
             MattressesPage.DeleteItemFromShoppingCart();
             string actualResult = MattressesPage.GetTextOutput();
 

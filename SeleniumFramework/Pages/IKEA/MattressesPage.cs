@@ -1,7 +1,4 @@
 ﻿
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using System;
 
 namespace SeleniumFramework.Pages.IKEA
 {
@@ -24,13 +21,12 @@ namespace SeleniumFramework.Pages.IKEA
             Common.ClickElement(locator);
         }
 
-        public static void ClosePopupWindow()
+        public static void CloseDialogWindow()
         {
 
             string locator = "//*[@data-action='close']";
-            Common.SwitchToPopup();
-            System.Threading.Thread.Sleep(1000);
-            Common.ClickElement(locator);
+            Common.SwitchToDialog();
+            Common.WaitForElementAndClick(locator);
 
         }
 
@@ -62,20 +58,18 @@ namespace SeleniumFramework.Pages.IKEA
             Common.ClickElement(locator);
         }
 
-        public static void ClickButtonInFrameAddToCart()
+        public static void ClickButtonInSideNavigationAddToCart()
         {
             string locator = "//*[@class='shopping-cart-buy']";
-            Common.SwitchToFrame();
-            System.Threading.Thread.Sleep(1000);
-            Common.ClickElement(locator);
+            Common.SwitchToSideNavigation();
+            Common.WaitForElementAndClick(locator);
         }
 
-        public static void OpenShoppingCartThroughPopupWindow()
+        public static void OpenShoppingCartThroughDialogWindow()
         {
             string locator = "//*[@data-action='goCart']";
-            Common.SwitchToPopup();
-            System.Threading.Thread.Sleep(1000);
-            Common.ClickElement(locator);
+            Common.SwitchToDialog();
+            Common.WaitForElementAndClick(locator);
         }
 
         public static void DeleteItemFromShoppingCart()
