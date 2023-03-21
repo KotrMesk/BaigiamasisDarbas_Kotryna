@@ -10,10 +10,9 @@ namespace SeleniumTests.Tests.IKEA
         public void MinimumPriceInSliderAdjustment()
         {
             TapsPage.Open();
-            TapsPage.SelectFilters();
             TapsPage.SelectPriceFilter();
             TapsPage.SlideLowPriceHandleToTheRight();
-            TapsPage.ClickPriceFilter();
+            TapsPage.SelectPriceFilter();
             TapsPage.ScrollDownToSeePrices();
 
             Assert.True(TapsPage.CompareSortedItemsPricesToNewSliderValue());

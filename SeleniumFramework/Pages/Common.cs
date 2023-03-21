@@ -103,5 +103,17 @@ namespace SeleniumFramework.Pages
                 return false;
             }
         }
+
+        internal static void WaitForElementToBeInvisible(string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(locator)));
+        }
+
+        internal static void WaitForElementToBeVisible(string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(locator)));
+        }
     }
 }

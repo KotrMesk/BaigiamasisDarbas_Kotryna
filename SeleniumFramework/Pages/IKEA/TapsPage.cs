@@ -16,12 +16,14 @@ namespace SeleniumFramework.Pages.IKEA
 
         public static void SelectPriceFilter()
         {
-            Common.ClickElement("//*[@class='filterBlock'][1]");
+            Common.ClickElement("//*[@data-id='price']/..");
         }
 
         public static void SlideLowPriceHandleToTheRight()
         {
             Common.SlideLowPriceHandleToTheRight("//*[@class='pointer low']");
+            Common.WaitForElementToBeVisible("//*[@class='busy-load-container']");
+            Common.WaitForElementToBeInvisible("//*[@class='busy-load-container']");
         }
 
         public static void ClickPriceFilter()
