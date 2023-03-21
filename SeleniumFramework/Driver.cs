@@ -14,10 +14,8 @@ namespace SeleniumFramework
         public static void SetupDriver()
         {
             ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--headless");
             driver.Value = new ChromeDriver(options);
-            //options.AddArgument("--disable-infobars");
-            //options.AddExcludedArgument("enable-automation");
-            //options.AddExcludedArgument("excludeSwitches");
         }
         public static void CloseDriver()
         {

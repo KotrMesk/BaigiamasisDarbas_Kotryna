@@ -82,15 +82,15 @@ namespace SeleniumFramework.Pages
         internal static void ScrollDownToSeePrices()
         {
             Actions actions = new Actions(Driver.GetDriver());
-            actions.ScrollByAmount(0, 200);
+            actions.ScrollByAmount(0, 400);
             actions.Perform();
         }
 
         internal static bool CompareSortedItemsPricesToNewSliderValue()
         {
             string locator = "//*[@class='itemNormalPrice display-6']";
-            string prices = GetElement(locator).Text.Substring(0, 3);
-            int pricesnew = Int32.Parse(prices);
+            string prices = GetElement(locator).Text;
+            int pricesnew = Int32.Parse(prices.Replace(" €", ""));
             string locator1 = "//*[@id='pmin-pmin']";
             string compare = GetElement(locator1).Text.Substring(12, 3);
             int newLowValue = Int32.Parse(compare);
