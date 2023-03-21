@@ -1,9 +1,4 @@
-﻿
-
-using System;
-using System.Xml.Linq;
-
-namespace SeleniumFramework.Pages.IKEA
+﻿namespace SeleniumFramework.Pages.IKEA
 {
     public class BusinessInquiryPage
     {
@@ -59,11 +54,11 @@ namespace SeleniumFramework.Pages.IKEA
         {
             string locator = "//*[@class='btn btn-blue-link']";
             Common.ClickElement(locator);
+            Common.WaitForElementToNotExist("//*[@class='busy-load-container']");
         }
 
         public static string GetWrongRepresentativeNameResult()
         {
-            Common.ScrollToElement(0, -300);
             return Common.GetElementText("//*[@class='error-message']");
         }
     }
