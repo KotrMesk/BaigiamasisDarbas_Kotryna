@@ -2,7 +2,7 @@
 {
     public class ClientPage
     {
-        private static string boxToChangeColorLocator = "//*[@name='loginForm_email']";
+        private static string inputEmail = "//*[@name='loginForm_email']";
 
         public static void Open()
         {
@@ -11,8 +11,7 @@
 
         public static void EnterEmail(string email)
         {
-            string locator = "//*[@name='loginForm_email']";
-            Common.SendKeys(locator, email);
+            Common.SendKeys(inputEmail, email);
         }
 
         public static void EnterPassword(string password)
@@ -27,9 +26,9 @@
             Common.ClickElement(locator);
         }
 
-        public static string GetEmailBoxBorderColor()
+        public static string GetEmailInputBorderColor()
         {
-            return Common.GetElementCssAttributeValue(boxToChangeColorLocator, "border-color");
+            return Common.GetElementCssAttributeValue(inputEmail, "border-color");
         }
 
         public static string GetEmailValidationMessage()
@@ -37,9 +36,9 @@
             return Common.GetElementText("//*[@class='message']");
         }
 
-        public static void WaitForEmailBoxBorderColorToBe(string expectedColor)
+        public static void WaitForEmailInputBorderColorToBe(string expectedColor)
         {
-            Common.WaitForElementCssPropertyToBe(boxToChangeColorLocator, "border-color", expectedColor);
+            Common.WaitForElementCssPropertyToBe(inputEmail, "border-color", expectedColor);
         }
     }
 }

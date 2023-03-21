@@ -19,9 +19,9 @@ namespace SeleniumTests.Tests.IKEA
             ClientPage.EnterEmail(email);
             ClientPage.EnterPassword(password);
             ClientPage.ClickLoginButton();
-            ClientPage.WaitForEmailBoxBorderColorToBe(expectedEmailBoxColor);
+            ClientPage.WaitForEmailInputBorderColorToBe(expectedEmailBoxColor);
             
-            string actualEmailBoxColor = ClientPage.GetEmailBoxBorderColor();
+            string actualEmailBoxColor = ClientPage.GetEmailInputBorderColor();
             string actualEmailValidationMessage = ClientPage.GetEmailValidationMessage();
 
             Assert.AreEqual(actualEmailBoxColor, expectedEmailBoxColor);
