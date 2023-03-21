@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-namespace SeleniumFramework.Pages.IKEA
+﻿namespace SeleniumFramework.Pages.IKEA
 {
     public class MattressesPage
     {
@@ -26,7 +25,6 @@ namespace SeleniumFramework.Pages.IKEA
             string locator = "//*[@data-action='close']";
             Common.WaitForElementToBeVisisble("//*[@class='modal fade show']");
             Common.ClickElement(locator);
-
         }
 
         public static void ClickShoppingCartButton()
@@ -43,12 +41,6 @@ namespace SeleniumFramework.Pages.IKEA
         public static string GetItemNumberInShoppingCart()
         {
             return Common.GetElementText("//*[@class='partnumber']");
-        }
-
-        public static void AcceptCookies()
-        {
-            string locator = "//*[@id='CybotCookiebotDialogBodyLevelButtonAccept']";
-            Common.ClickElement(locator);
         }
 
         public static void UnderFirstItemClickQuickLookButton()
