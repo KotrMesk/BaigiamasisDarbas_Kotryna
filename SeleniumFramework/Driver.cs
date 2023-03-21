@@ -15,9 +15,9 @@ namespace SeleniumFramework
         {
             ChromeOptions options = new ChromeOptions();
             driver.Value = new ChromeDriver(options);
-            options.AddArgument("--disable-infobars");
-            options.AddExcludedArgument("enable-automation");
-            options.AddExcludedArgument("excludeSwitches");
+            //options.AddArgument("--disable-infobars");
+            //options.AddExcludedArgument("enable-automation");
+            //options.AddExcludedArgument("excludeSwitches");
         }
         public static void CloseDriver()
         {

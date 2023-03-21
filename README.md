@@ -18,13 +18,13 @@
         5. Po preke spausti mygtuką „Pašalinti“
         - Tikrinti ar puslapyje atsirado žinutė: Jūsų pirkinių krepšelis tuščias. Jūs neturite prekių pirkinių krepšelyje.
 2. Test Scenario: Prekių filtravimas pagal kainą:
-    1. TC: Maksimalios kainos mažinimas (Slider rankenėlės dešinėje stūmimas į kairę pusę):
+    1. TC: Minimalios kainos didinimas (Slider rankenėlės kairėje stūmimas į dešinę pusę):
         - Atidaromas psl.: https://www.ikea.lt/lt/rooms/vonia/vonios-vandens-maisytuvai
         1. Filtravimo juostoje renkamasi kategorija „Kaina“
-        2. Slideryje dešinę rankenėlę stumiame į kairę pusę kol virš rankenėlės atsiranda skaičius 36
+        2. Slideryje kairę rankenėlę stumiame į dešinę pusę 
         3. Paspaudžiame Kaina filtravimo meniu kad meniu pasirinkimas būtų uždarytas
         4. Pavažiuojame žemyn kad matytųsi kainos produktų
-        - Lyginamos pateiktų produktų kainas ar jos nėra didesnės nei 36eur
+        - Lyginamos pateiktų produktų kainas ar jos nėra mažesnės nei nustatytas minimumas
 3. Test Scenario: Prisijungimo prie paskyros tikrinimas:
     1. Neteisingo el.pašto į el.pašto adreso laukelį įvedimo:
         - Atidaromas psl.: https://www.ikea.lt/lt/client

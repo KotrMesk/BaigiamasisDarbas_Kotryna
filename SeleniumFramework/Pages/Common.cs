@@ -1,9 +1,11 @@
-﻿
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace SeleniumFramework.Pages
 {
@@ -65,6 +67,41 @@ namespace SeleniumFramework.Pages
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
             GetElement(locator).Click();
+        }
+
+        internal static void SlideLowPriceHandleToTheRight(string locator)
+        {
+            IWebElement element = GetElement(locator);
+
+            Actions actions = new Actions(Driver.GetDriver());
+            actions.DragAndDropToOffset(element, 150, 0);
+
+            actions.Perform();
+        }
+
+        internal static void ScrollDownToSeePrices()
+        {
+            Actions actions = new Actions(Driver.GetDriver());
+            actions.ScrollByAmount(0, 200);
+            actions.Perform();
+        }
+
+        internal static bool CompareSortedItemsPricesToNewSliderValue()
+        {
+            string locator = "//*[@class='itemNormalPrice display-6']";
+            string prices = GetElement(locator).Text.Substring(0, 3);
+            int pricesnew = Int32.Parse(prices);
+            string locator1 = "//*[@id='pmin-pmin']";
+            string compare = GetElement(locator1).Text.Substring(12, 3);
+            int newLowValue = Int32.Parse(compare);
+            if (pricesnew >= newLowValue)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
