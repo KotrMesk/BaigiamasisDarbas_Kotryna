@@ -12,25 +12,25 @@ namespace SeleniumTests.Tests.IKEA
     internal class LoginToAccountScenario : BaseTest
     {
         [Test]
-        public void LoginToAccountWithWrongEmail()
+        public void LoginToAccountWithInvalidEmail()
         {
-            string expectedWrongEmailBoxColor = "rgb(204, 0, 0)";
-            string expectedWrongEmailMessage = "Invalid email";
+            string expectedEmailBoxColor = "rgb(204, 0, 0)";
+            string expectedEmailValidationMessage = "Invalid email";
 
             string email = "elpastas";
             string password = "slaptazodis";
             
             ClientPage.Open();
-            ClientPage.InputWrongEmail(email);
-            ClientPage.InputPassword(password);
+            ClientPage.EnterEmail(email);
+            ClientPage.EnterPassword(password);
             ClientPage.ClickLoginButton();
-            ClientPage.WaitForEmailBoxBorderColorToBe(expectedWrongEmailBoxColor);
+            ClientPage.WaitForEmailBoxBorderColorToBe(expectedEmailBoxColor);
             
-            string actualWrongEmailBoxColor = ClientPage.GetWrongEmailBoxBorderColor();
-            string actualWrongEmailMessage = ClientPage.GetWrongEmailMessage();
+            string actualEmailBoxColor = ClientPage.GetEmailBoxBorderColor();
+            string actualEmailValidationMessage = ClientPage.GetEmailValidationMessage();
 
-            Assert.AreEqual(actualWrongEmailBoxColor, expectedWrongEmailBoxColor);
-            Assert.AreEqual(actualWrongEmailMessage, expectedWrongEmailMessage);
+            Assert.AreEqual(actualEmailBoxColor, expectedEmailBoxColor);
+            Assert.AreEqual(actualEmailValidationMessage, expectedEmailValidationMessage);
         }
 
     }

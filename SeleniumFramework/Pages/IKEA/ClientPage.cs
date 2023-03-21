@@ -17,13 +17,13 @@ namespace SeleniumFramework.Pages.IKEA
             Driver.OpenUrl("https://www.ikea.lt/lt/client");
         }
 
-        public static void InputWrongEmail(string email)
+        public static void EnterEmail(string email)
         {
             string locator = "//*[@name='loginForm_email']";
             Common.SendKeys(locator, email);
         }
 
-        public static void InputPassword(string password)
+        public static void EnterPassword(string password)
         {
             string locator = "//*[@name='loginForm_password']";
             Common.SendKeys(locator, password);
@@ -35,12 +35,12 @@ namespace SeleniumFramework.Pages.IKEA
             Common.ClickElement(locator);
         }
 
-        public static string GetWrongEmailBoxBorderColor()
+        public static string GetEmailBoxBorderColor()
         {
             return Common.GetElementCssAttributeValue(boxToChangeColorLocator, "border-color");
         }
 
-        public static string GetWrongEmailMessage()
+        public static string GetEmailValidationMessage()
         {
             return Common.GetElementText("//*[@class='message']");
         }
