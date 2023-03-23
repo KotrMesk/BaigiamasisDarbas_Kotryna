@@ -1,9 +1,4 @@
-﻿
-
-using System;
-using System.Xml.Linq;
-
-namespace SeleniumFramework.Pages.IKEA
+﻿namespace SeleniumFramework.Pages.IKEA
 {
     public class BusinessInquiryPage
     {
@@ -12,37 +7,37 @@ namespace SeleniumFramework.Pages.IKEA
             Driver.OpenUrl("https://www.ikea.lt/lt/business/inquiry");
         }
 
-        public static void InputWrongRepresentativeName(string name)
+        public static void EnterWrongRepresentativeName(string name)
         {
             string locator = "//*[@name='representative_name']";
             Common.SendKeys(locator, name);
         }
 
-        public static void InputRepresentativeSurname(string surname)
+        public static void EnterRepresentativeSurname(string surname)
         {
             string locator = "//*[@name='representative_surname']";
             Common.SendKeys(locator, surname);
         }
 
-        public static void InputCompanyName(string companyName)
+        public static void EnterCompanyName(string companyName)
         {
             string locator = "//*[@name='company_name']";
             Common.SendKeys(locator, companyName);
         }
 
-        public static void InputEmail(string email)
+        public static void EnterEmail(string email)
         {
             string locator = "//*[@name='email']";
             Common.SendKeys(locator, email);
         }
 
-        public static void InputPhone(string phone)
+        public static void EnterPhone(string phone)
         {
             string locator = "//*[@name='phone']";
             Common.SendKeys(locator, phone);
         }
 
-        public static void InputRequest(string request)
+        public static void EnterRequest(string request)
         {
             string locator = "//*[@id='root']/div[4]/div/textarea";
             Common.SendKeys(locator, request);
@@ -51,7 +46,6 @@ namespace SeleniumFramework.Pages.IKEA
         public static void CheckBoxAgreeToTermsAndConditionsAndPrivacyPolicy()
         {
             string locator = "//*[@id='agree_terms']";
-            Common.ScrollToElement(0, 250);
             Common.ClickElement(locator);
         }
 
@@ -59,11 +53,11 @@ namespace SeleniumFramework.Pages.IKEA
         {
             string locator = "//*[@class='btn btn-blue-link']";
             Common.ClickElement(locator);
+            Common.WaitForElementToNotExist("//*[@class='busy-load-container']");
         }
 
         public static string GetWrongRepresentativeNameResult()
         {
-            Common.ScrollToElement(0, -300);
             return Common.GetElementText("//*[@class='error-message']");
         }
     }

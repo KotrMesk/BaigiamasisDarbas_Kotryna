@@ -1,6 +1,4 @@
-﻿
-
-namespace SeleniumFramework.Pages.IKEA
+﻿namespace SeleniumFramework.Pages.IKEA
 {
     public class MattressesPage
     {
@@ -25,14 +23,13 @@ namespace SeleniumFramework.Pages.IKEA
         {
 
             string locator = "//*[@data-action='close']";
-            Common.SwitchToDialog();
-            Common.WaitForElementAndClick(locator);
-
+            Common.WaitForElementToBeVisisble("//*[@class='modal fade show']");
+            Common.ClickElement(locator);
         }
 
         public static void ClickShoppingCartButton()
         {
-            string locator = "//*[@class='cart full empty']";
+            string locator = "//*[@id='headerMainToggler']//*[@class='cart full empty']";
             Common.ClickElement(locator);
         }
 
@@ -46,12 +43,6 @@ namespace SeleniumFramework.Pages.IKEA
             return Common.GetElementText("//*[@class='partnumber']");
         }
 
-        public static void AcceptCookies()
-        {
-            string locator = "//*[@id='CybotCookiebotDialogBodyLevelButtonAccept']";
-            Common.ClickElement(locator);
-        }
-
         public static void UnderFirstItemClickQuickLookButton()
         {
             string locator = "//*[@data-item='00450502']";
@@ -61,14 +52,15 @@ namespace SeleniumFramework.Pages.IKEA
         public static void ClickButtonInSideNavigationAddToCart()
         {
             string locator = "//*[@class='shopping-cart-buy']";
-            Common.SwitchToSideNavigation();
             Common.WaitForElementAndClick(locator);
+            Common.WaitForElementToBeVisisble("//*[@class='modal fade show']");
         }
 
         public static void OpenShoppingCartThroughDialogWindow()
         {
             string locator = "//*[@data-action='goCart']";
-            Common.SwitchToDialog();
+            // Brain started melting, could not find a proper way to wait
+            System.Threading.Thread.Sleep(1000);
             Common.WaitForElementAndClick(locator);
         }
 

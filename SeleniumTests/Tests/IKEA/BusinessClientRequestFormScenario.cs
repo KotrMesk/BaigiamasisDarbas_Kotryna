@@ -19,12 +19,12 @@ namespace SeleniumTests.Tests.IKEA
             string expectedResult = $"Lauke negali būti įvesti simboliai '{name[0]}', '{name[1]}', '{name[2]}'";
 
             BusinessInquiryPage.Open();
-            BusinessInquiryPage.InputWrongRepresentativeName(name);
-            BusinessInquiryPage.InputRepresentativeSurname(surname);
-            BusinessInquiryPage.InputCompanyName(companyName);
-            BusinessInquiryPage.InputEmail(email);
-            BusinessInquiryPage.InputPhone(phone);
-            BusinessInquiryPage.InputRequest(request);
+            BusinessInquiryPage.EnterWrongRepresentativeName(name);
+            BusinessInquiryPage.EnterRepresentativeSurname(surname);
+            BusinessInquiryPage.EnterCompanyName(companyName);
+            BusinessInquiryPage.EnterEmail(email);
+            BusinessInquiryPage.EnterPhone(phone);
+            BusinessInquiryPage.EnterRequest(request);
             BusinessInquiryPage.CheckBoxAgreeToTermsAndConditionsAndPrivacyPolicy();
             BusinessInquiryPage.ClickSubmitButton();
             string actualResult = BusinessInquiryPage.GetWrongRepresentativeNameResult();

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using SeleniumFramework;
+using SeleniumFramework.Pages.IKEA;
 
 namespace SeleniumTests.BaseTests
 {
@@ -10,6 +11,8 @@ namespace SeleniumTests.BaseTests
         public void SetUp()
         {
             Driver.SetupDriver();
+            HomePage.Open();
+            HomePage.AcceptCookies();
         }
 
         [TearDown]

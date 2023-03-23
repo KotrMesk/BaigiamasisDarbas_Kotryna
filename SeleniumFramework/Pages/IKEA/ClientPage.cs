@@ -1,29 +1,20 @@
-﻿using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace SeleniumFramework.Pages.IKEA
+﻿namespace SeleniumFramework.Pages.IKEA
 {
     public class ClientPage
     {
-        private static string boxToChangeColorLocator = "//*[@name='loginForm_email']";
+        private static string inputEmail = "//*[@name='loginForm_email']";
+
         public static void Open()
         {
             Driver.OpenUrl("https://www.ikea.lt/lt/client");
         }
 
-        public static void InputWrongEmail(string email)
+        public static void EnterEmail(string email)
         {
-            string locator = "//*[@name='loginForm_email']";
-            Common.SendKeys(locator, email);
+            Common.SendKeys(inputEmail, email);
         }
 
-        public static void InputPassword(string password)
+        public static void EnterPassword(string password)
         {
             string locator = "//*[@name='loginForm_password']";
             Common.SendKeys(locator, password);
@@ -35,19 +26,19 @@ namespace SeleniumFramework.Pages.IKEA
             Common.ClickElement(locator);
         }
 
-        public static string GetWrongEmailBoxBorderColor()
+        public static string GetEmailInputBorderColor()
         {
-            return Common.GetElementCssAttributeValue(boxToChangeColorLocator, "border-color");
+            return Common.GetElementCssAttributeValue(inputEmail, "border-color");
         }
 
-        public static string GetWrongEmailMessage()
+        public static string GetEmailValidationMessage()
         {
             return Common.GetElementText("//*[@class='message']");
         }
 
-        public static void WaitForEmailBoxBorderColorToBe(string expectedColor)
+        public static void WaitForEmailInputBorderColorToBe(string expectedColor)
         {
-            Common.WaitForElementCssPropertyToBe(boxToChangeColorLocator, "border-color", expectedColor);
+            Common.WaitForElementCssPropertyToBe(inputEmail, "border-color", expectedColor);
         }
     }
 }

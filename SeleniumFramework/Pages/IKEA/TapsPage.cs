@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SeleniumFramework.Pages.IKEA
 {
@@ -9,34 +10,66 @@ namespace SeleniumFramework.Pages.IKEA
             Driver.OpenUrl("https://www.ikea.lt/lt/rooms/vonia/vonios-vandens-maisytuvai");
         }
 
-        public static void SelectFilters()
+        public static void TogglePriceFilter()
         {
-            Common.ClickElement("//*[@class='filterToggler']");
+            Common.ClickElement("//*[@data-id='price']/..");
         }
 
-        public static void SelectPriceFilter()
+        public static void SlideLowPriceHandleAboveSpecifiedValue(int specifiedValue)
         {
-            Common.ClickElement("//*[@class='filterBlock'][1]");
+            string locatorSliderElement = "//*[@data-id='price']//*[contains(@class,'pointer low')]";
+            string locatorSliderValue = "//*[@data-id='price']//*[@class='pointer-label low']";
+
+            int actualValue = Convert.ToInt32(Common.GetElementText(locatorSliderValue));
+            while (actualValue < specifiedValue)
+            {
+                Common.DragAndDropToOffset(locatorSliderElement, 20, 0);
+                actualValue = Convert.ToInt32(Common.GetElementText(locatorSliderValue));
+            }
         }
 
-        public static void SlideLowPriceHandleToTheRight()
+        public static void SlideHighPriceHandleBelowSpecifiedValue(int specifiedValue)
         {
-            Common.SlideLowPriceHandleToTheRight("//*[@class='pointer low']");
+            string locatorSliderElement = "//*[@data-id='price']//*[contains(@class,'pointer high')]";
+            string locatorSliderValue = "//*[@data-id='price']//*[@class='pointer-label high']";
+
+            int actualValue = Convert.ToInt32(Common.GetElementText(locatorSliderValue));
+            while (actualValue > specifiedValue)
+            {
+                Common.DragAndDropToOffset(locatorSliderElement, -20, 0);
+                actualValue = Convert.ToInt32(Common.GetElementText(locatorSliderValue));
+            }
         }
 
-        public static void ClickPriceFilter()
+        public static int GetActualPriceFilterLowValue()
         {
-            Common.ClickElement("//*[@class='filterToggler']");
+            return Convert.ToInt32(Common.GetElementText("//*[@data-id='price']//*[@class='pointer-label low']"));
         }
 
-        public static void ScrollDownToSeePrices()
+        public static int GetActualPriceFilterHighValue()
         {
-            Common.ScrollDownToSeePrices();
+            return Convert.ToInt32(Common.GetElementText("//*[@data-id='price']//*[@class='pointer-label high']"));
         }
 
-        public static bool CompareSortedItemsPricesToNewSliderValue()
+        public static bool DisplayedProductPricesAreWithinRange(int priceLowValue, int priceHighValue)
         {
-            return Common.CompareSortedItemsPricesToNewSliderValue();
+            List<string> pricesText = Common.GetTextOfMultipleElements();
+            List<double> prices = new List<double>();
+
+            foreach (string price in pricesText)
+            {
+                prices.Add(Convert.ToDouble(price.Remove(price.Length - 1)));
+            }
+
+            foreach (double price in prices)
+            {
+                if (price < priceLowValue || price > priceHighValue)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

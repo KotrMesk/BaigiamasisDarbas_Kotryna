@@ -1,37 +1,31 @@
 ﻿using NUnit.Framework;
 using SeleniumFramework.Pages.IKEA;
 using SeleniumTests.BaseTests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumTests.Tests.IKEA
 {
     internal class LoginToAccountScenario : BaseTest
     {
         [Test]
-        public void LoginToAccountWithWrongEmail()
+        public void LoginToAccountWithInvalidEmail()
         {
-            string expectedWrongEmailBoxColor = "rgb(204, 0, 0)";
-            string expectedWrongEmailMessage = "Invalid email";
+            string expectedEmailBoxColor = "rgb(204, 0, 0)";
+            string expectedEmailValidationMessage = "Invalid email";
 
             string email = "elpastas";
             string password = "slaptazodis";
             
             ClientPage.Open();
-            ClientPage.InputWrongEmail(email);
-            ClientPage.InputPassword(password);
+            ClientPage.EnterEmail(email);
+            ClientPage.EnterPassword(password);
             ClientPage.ClickLoginButton();
-            ClientPage.WaitForEmailBoxBorderColorToBe(expectedWrongEmailBoxColor);
+            ClientPage.WaitForEmailInputBorderColorToBe(expectedEmailBoxColor);
             
-            string actualWrongEmailBoxColor = ClientPage.GetWrongEmailBoxBorderColor();
-            string actualWrongEmailMessage = ClientPage.GetWrongEmailMessage();
+            string actualEmailBoxColor = ClientPage.GetEmailInputBorderColor();
+            string actualEmailValidationMessage = ClientPage.GetEmailValidationMessage();
 
-            Assert.AreEqual(actualWrongEmailBoxColor, expectedWrongEmailBoxColor);
-            Assert.AreEqual(actualWrongEmailMessage, expectedWrongEmailMessage);
+            Assert.AreEqual(actualEmailBoxColor, expectedEmailBoxColor);
+            Assert.AreEqual(actualEmailValidationMessage, expectedEmailValidationMessage);
         }
-
     }
 }

@@ -4,7 +4,6 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace SeleniumFramework.Pages
@@ -15,6 +14,12 @@ namespace SeleniumFramework.Pages
         {
             return Driver.GetDriver().FindElement(By.XPath(locator));
         }
+
+        private static List<IWebElement> GetElements(string locator)
+        {
+            return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
+        }
+
         internal static void SendKeys(string locator, string keys)
         {
             GetElement(locator).SendKeys(keys);
@@ -23,12 +28,6 @@ namespace SeleniumFramework.Pages
         internal static void ClickElement(string locator)
         {
             GetElement(locator).Click();
-        }
-        internal static void ScrollToElement(int x, int y)
-        {
-            Actions actions = new Actions(Driver.GetDriver());
-            actions.ScrollByAmount(x, y);
-            actions.Perform();
         }
 
         internal static string GetElementText(string locator)
@@ -47,16 +46,6 @@ namespace SeleniumFramework.Pages
             wait.Until(d => d.FindElement(By.XPath(locator)).GetCssValue(cssProperty) == expectedColor);
         }
 
-        internal static void SwitchToDialog()
-        {
-            Driver.GetDriver().SwitchTo().Equals(false);
-        }
-
-        internal static void SwitchToSideNavigation()
-        {
-            Driver.GetDriver().FindElement(By.XPath("//*[@id='sidenav']"));
-        }
-
         internal static string GetElementTextPart(string locator)
         {
             return GetElement(locator).Text.Substring(14, 10);
@@ -69,39 +58,48 @@ namespace SeleniumFramework.Pages
             GetElement(locator).Click();
         }
 
-        internal static void SlideLowPriceHandleToTheRight(string locator)
+        internal static void DragAndDropToOffset(string locator, int offsetX, int offsetY)
         {
             IWebElement element = GetElement(locator);
 
             Actions actions = new Actions(Driver.GetDriver());
-            actions.DragAndDropToOffset(element, 150, 0);
-
+            actions.DragAndDropToOffset(element, offsetX, offsetY);
             actions.Perform();
         }
 
-        internal static void ScrollDownToSeePrices()
+        internal static List<string> GetTextOfMultipleElements()
         {
-            Actions actions = new Actions(Driver.GetDriver());
-            actions.ScrollByAmount(0, 400);
-            actions.Perform();
+            List<IWebElement> elements = GetElements("//*[contains(@class,'itemNormalPrice')]");
+            List<string> texts = new List<string>();
+
+            foreach (IWebElement element in elements)
+            {
+                texts.Add(element.Text);
+            }
+
+            return texts;
         }
 
-        internal static bool CompareSortedItemsPricesToNewSliderValue()
+        internal static void WaitForElementToNotExist(string locator)
         {
-            string locator = "//*[@class='itemNormalPrice display-6']";
-            string prices = GetElement(locator).Text;
-            int pricesnew = Int32.Parse(prices.Replace(" €", ""));
-            string locator1 = "//*[@id='pmin-pmin']";
-            string compare = GetElement(locator1).Text.Substring(12, 3);
-            int newLowValue = Int32.Parse(compare);
-            if (pricesnew >= newLowValue)
+            for (int i = 0; i < 20; i++)
             {
-                return true;
+                try
+                {
+                    GetElement(locator);
+                    System.Threading.Thread.Sleep(50);
+                }
+                catch (NoSuchElementException)
+                {
+                    return;
+                }
             }
-            else
-            {
-                return false;
-            }
+        }
+
+        internal static void WaitForElementToBeVisisble(string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
         }
     }
 }
